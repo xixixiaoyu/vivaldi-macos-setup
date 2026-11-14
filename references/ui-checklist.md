@@ -16,6 +16,15 @@ Open `设置 > 标签页`.
 Open `设置 > 键盘 > 标签页` only if the user wants a custom shortcut. Keep
 `Control+Tab` and `Control+Shift+Tab` as the default cycling shortcuts.
 
+For the validated top tab-bar layout, use the Vivaldi toolbar editor and keep
+this order:
+
+`TabButton` → `Extensions` → `Reload` → flexible spacer → `Back` → `Forward`
+→ `AddressField`
+
+The Reload, Back, and Forward controls must all remain present. If they are not,
+edit only the affected toolbar instead of resetting unrelated toolbars.
+
 ## 2. Bookmark panel
 
 Open `设置 > 面板`.
@@ -81,9 +90,29 @@ Open `设置 > 外观`.
 
 Use `设置 > 主题` next.
 
-- Prefer the built-in Vivaldi dark/light themes.
 - `跟随系统`: 开启
+- Light theme: Vivaldi's built-in `Vivaldi` theme
+- Dark theme: create both `雾紫石墨` and `青灰绿`; select either one in the
+  system dark-theme schedule
 - Do not force the dark theme across all websites by default; it can break sites.
+
+Create both themes from the built-in Dark theme. Use the following values:
+
+| Property | 雾紫石墨 | 青灰绿 |
+|---|---|---|
+| Background | `#1c1b20` | `#191d1b` |
+| Foreground | `#ecebf2` | `#e7f0eb` |
+| Highlight | `#7a6ccb` | `#66a68c` |
+| Accent | `#9c92e2` | `#86bca6` |
+| Window background | `#2e2f37` | `#2e2f37` |
+| Color mode | Unified | Unified |
+| Accent from active page | Off | Off |
+| Background saturation limit | 75% | 75% |
+| Contrast | 0 | 0 |
+| Radius | 8 | 8 |
+
+Keep the Vivaldi light theme as the system light mode so the dark custom theme
+does not force a dark appearance during the day.
 
 ## 6. Privacy and permissions
 

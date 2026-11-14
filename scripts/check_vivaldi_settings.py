@@ -71,6 +71,50 @@ def main() -> int:
         if not report(label, nested(prefs, path), expected):
             failures += 1
 
+    tabbar_before = nested(prefs, "vivaldi.toolbars.tabbar_before") or []
+    for control in ("Reload", "Back", "Forward"):
+        if not report(f"top toolbar contains {control}", control in tabbar_before, True):
+            failures += 1
+
+    themes = nested(prefs, "vivaldi.themes.user") or []
+    expected_themes = {
+        "雾紫石墨": {
+            "colorBg": "#1c1b20",
+            "colorFg": "#ecebf2",
+            "colorHighlightBg": "#7a6ccb",
+            "colorAccentBg": "#9c92e2",
+        },
+        "青灰绿": {
+            "colorBg": "#191d1b",
+            "colorFg": "#e7f0eb",
+            "colorHighlightBg": "#66a68c",
+            "colorAccentBg": "#86bca6",
+        },
+    }
+    theme_ids = set()
+    for name, expected_values in expected_themes.items():
+        theme = next((item for item in themes if item.get("name") == name), None)
+        if theme is None:
+            print(f"[FAIL] custom theme {name} was not found")
+            failures += 1
+            continue
+        theme_ids.add(theme.get("id"))
+        for key, expected in expected_values.items():
+            if not report(f"{name} {key}", theme.get(key), expected):
+                failures += 1
+        if not report(f"{name} does not take accent from page", theme.get("accentFromPage"), False):
+            failures += 1
+
+    schedule = nested(prefs, "vivaldi.theme.schedule") or {}
+    active_dark = schedule.get("o_s", {}).get("dark")
+    if active_dark not in theme_ids:
+        print(f"[FAIL] active dark theme is not one of the saved custom themes: {active_dark!r}")
+        failures += 1
+    else:
+        print(f"[PASS] active dark theme uses a saved custom theme: {active_dark!r}")
+    if not report("light theme remains Vivaldi", schedule.get("o_s", {}).get("light"), "Vivaldi1"):
+        failures += 1
+
     if LOCAL_STATE.exists():
         local_state = load_json(LOCAL_STATE)
         if not report(

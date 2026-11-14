@@ -17,6 +17,8 @@ avoiding unnecessary layout churn.
   from the right edge.
 - Address bar, tab bar, and bookmarks bar remain visible or hidden independently
   as specified in the checklist.
+- Two fixed dark themes named `雾紫石墨` and `青灰绿`, while the light theme
+  remains Vivaldi's built-in light theme.
 - Recent-use tab cycling, fast tab search, balanced memory use, session restore,
   light content blocking, and blocked-by-default notifications.
 - Existing bookmarks, passwords, history, profiles, and workspaces are preserved.
@@ -42,6 +44,7 @@ avoiding unnecessary layout churn.
    - The bookmark panel appears from the intended edge and collapses after focus
      moves back to the page.
    - Settings that should stay fixed, such as the address bar, do not disappear.
+   - The navigation toolbar includes Reload, Back, and Forward.
    - No existing tabs, bookmarks, or workspaces were removed.
 8. Run:
 
