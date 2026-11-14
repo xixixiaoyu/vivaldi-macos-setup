@@ -96,6 +96,12 @@ def main() -> int:
             "colorHighlightBg": "#c86e4d",
             "colorAccentBg": "#e5b66e",
         },
+        "暖纸夜": {
+            "colorBg": "#211d18",
+            "colorFg": "#ede5d7",
+            "colorHighlightBg": "#d58a5d",
+            "colorAccentBg": "#c9a86a",
+        },
     }
     theme_ids = {}
     for name, expected_values in expected_themes.items():
@@ -113,7 +119,7 @@ def main() -> int:
 
     schedule = nested(prefs, "vivaldi.theme.schedule") or {}
     active_dark = schedule.get("o_s", {}).get("dark")
-    if not report("system dark mode uses 青灰绿", active_dark, theme_ids.get("青灰绿")):
+    if not report("system dark mode uses 暖纸夜", active_dark, theme_ids.get("暖纸夜")):
         failures += 1
     active_light = schedule.get("o_s", {}).get("light")
     if not report("system light mode uses 暖纸黄", active_light, theme_ids.get("暖纸黄")):

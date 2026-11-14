@@ -2,8 +2,8 @@
 
 Codex skill for reproducing a stable, low-distraction Vivaldi workflow on macOS.
 It covers the top tab bar, right-side sliding bookmark panel, recent-tab
-switching, startup recovery, the `暖纸黄`, `青灰绿`, and `雾紫石墨` themes,
-bookmarks, privacy, and performance settings.
+switching, startup recovery, the `暖纸黄`, `暖纸夜`, `青灰绿`, and `雾紫石墨`
+themes, bookmarks, privacy, and performance settings.
 
 Validated with Vivaldi `8.3.4191.44` on 2026-11-14.
 

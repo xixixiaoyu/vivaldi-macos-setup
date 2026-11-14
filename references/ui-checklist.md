@@ -92,28 +92,28 @@ Use `设置 > 主题` next.
 
 - `跟随系统`: 开启
 - Light theme: `暖纸黄`
-- Dark theme: `青灰绿`
-- Keep `雾紫石墨` as an alternative dark theme
+- Dark theme: `暖纸夜`
+- Keep `青灰绿` and `雾紫石墨` as alternative dark themes
 - Do not force the dark theme across all websites by default; it can break sites.
 
-Create all three themes from the built-in Dark theme. Use the following values:
+Create all four themes from the built-in Dark theme. Use the following values:
 
-| Property | 暖纸黄 | 青灰绿 | 雾紫石墨 |
-|---|---|---|---|
-| Background | `#f4efe4` | `#191d1b` | `#1c1b20` |
-| Foreground | `#2d2a25` | `#e7f0eb` | `#ecebf2` |
-| Highlight | `#c86e4d` | `#66a68c` | `#7a6ccb` |
-| Accent | `#e5b66e` | `#86bca6` | `#9c92e2` |
-| Window background | `#2e2f37` | `#2e2f37` | `#2e2f37` |
-| Color mode | Unified | Unified | Unified |
-| Accent from active page | Off | Off | Off |
-| Background saturation limit | 75% | 75% | 75% |
-| Contrast | 0 | 0 | 0 |
-| Radius | 8 | 8 | 8 |
+| Property | 暖纸黄 | 暖纸夜 | 青灰绿 | 雾紫石墨 |
+|---|---|---|---|---|
+| Background | `#f4efe4` | `#211d18` | `#191d1b` | `#1c1b20` |
+| Foreground | `#2d2a25` | `#ede5d7` | `#e7f0eb` | `#ecebf2` |
+| Highlight | `#c86e4d` | `#d58a5d` | `#66a68c` | `#7a6ccb` |
+| Accent | `#e5b66e` | `#c9a86a` | `#86bca6` | `#9c92e2` |
+| Window background | `#2e2f37` | `#2e2f37` | `#2e2f37` | `#2e2f37` |
+| Color mode | Unified | Unified | Unified | Unified |
+| Accent from active page | Off | Off | Off | Off |
+| Background saturation limit | 75% | 75% | 75% | 75% |
+| Contrast | 0 | 0 | 0 | 0 |
+| Radius | 8 | 8 | 8 | 8 |
 
-Set `暖纸黄` as the light schedule and `青灰绿` as the dark schedule. The warm
-cream palette is intentionally limited to light mode; do not use a yellow
-background for the dark theme.
+Set `暖纸黄` as the light schedule and `暖纸夜` as the dark schedule. The warm
+cream palette is limited to light mode; dark mode uses a genuinely dark warm
+brown palette.
 
 ## 6. Privacy and permissions
 
