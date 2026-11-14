@@ -17,8 +17,8 @@ avoiding unnecessary layout churn.
   from the right edge.
 - Address bar, tab bar, and bookmarks bar remain visible or hidden independently
   as specified in the checklist.
-- Two fixed dark themes named `雾紫石墨` and `青灰绿`, while the light theme
-  remains Vivaldi's built-in light theme.
+- Three fixed themes: `暖纸黄` for system light mode, `青灰绿` for system dark
+  mode, plus the alternative dark theme `雾紫石墨`.
 - Recent-use tab cycling, fast tab search, balanced memory use, session restore,
   light content blocking, and blocked-by-default notifications.
 - Existing bookmarks, passwords, history, profiles, and workspaces are preserved.

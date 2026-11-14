@@ -91,28 +91,29 @@ Open `设置 > 外观`.
 Use `设置 > 主题` next.
 
 - `跟随系统`: 开启
-- Light theme: Vivaldi's built-in `Vivaldi` theme
-- Dark theme: create both `雾紫石墨` and `青灰绿`; select either one in the
-  system dark-theme schedule
+- Light theme: `暖纸黄`
+- Dark theme: `青灰绿`
+- Keep `雾紫石墨` as an alternative dark theme
 - Do not force the dark theme across all websites by default; it can break sites.
 
-Create both themes from the built-in Dark theme. Use the following values:
+Create all three themes from the built-in Dark theme. Use the following values:
 
-| Property | 雾紫石墨 | 青灰绿 |
-|---|---|---|
-| Background | `#1c1b20` | `#191d1b` |
-| Foreground | `#ecebf2` | `#e7f0eb` |
-| Highlight | `#7a6ccb` | `#66a68c` |
-| Accent | `#9c92e2` | `#86bca6` |
-| Window background | `#2e2f37` | `#2e2f37` |
-| Color mode | Unified | Unified |
-| Accent from active page | Off | Off |
-| Background saturation limit | 75% | 75% |
-| Contrast | 0 | 0 |
-| Radius | 8 | 8 |
+| Property | 暖纸黄 | 青灰绿 | 雾紫石墨 |
+|---|---|---|---|
+| Background | `#f4efe4` | `#191d1b` | `#1c1b20` |
+| Foreground | `#2d2a25` | `#e7f0eb` | `#ecebf2` |
+| Highlight | `#c86e4d` | `#66a68c` | `#7a6ccb` |
+| Accent | `#e5b66e` | `#86bca6` | `#9c92e2` |
+| Window background | `#2e2f37` | `#2e2f37` | `#2e2f37` |
+| Color mode | Unified | Unified | Unified |
+| Accent from active page | Off | Off | Off |
+| Background saturation limit | 75% | 75% | 75% |
+| Contrast | 0 | 0 | 0 |
+| Radius | 8 | 8 | 8 |
 
-Keep the Vivaldi light theme as the system light mode so the dark custom theme
-does not force a dark appearance during the day.
+Set `暖纸黄` as the light schedule and `青灰绿` as the dark schedule. The warm
+cream palette is intentionally limited to light mode; do not use a yellow
+background for the dark theme.
 
 ## 6. Privacy and permissions
 

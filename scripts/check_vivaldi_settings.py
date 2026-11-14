@@ -90,15 +90,21 @@ def main() -> int:
             "colorHighlightBg": "#66a68c",
             "colorAccentBg": "#86bca6",
         },
+        "暖纸黄": {
+            "colorBg": "#f4efe4",
+            "colorFg": "#2d2a25",
+            "colorHighlightBg": "#c86e4d",
+            "colorAccentBg": "#e5b66e",
+        },
     }
-    theme_ids = set()
+    theme_ids = {}
     for name, expected_values in expected_themes.items():
         theme = next((item for item in themes if item.get("name") == name), None)
         if theme is None:
             print(f"[FAIL] custom theme {name} was not found")
             failures += 1
             continue
-        theme_ids.add(theme.get("id"))
+        theme_ids[name] = theme.get("id")
         for key, expected in expected_values.items():
             if not report(f"{name} {key}", theme.get(key), expected):
                 failures += 1
@@ -107,12 +113,10 @@ def main() -> int:
 
     schedule = nested(prefs, "vivaldi.theme.schedule") or {}
     active_dark = schedule.get("o_s", {}).get("dark")
-    if active_dark not in theme_ids:
-        print(f"[FAIL] active dark theme is not one of the saved custom themes: {active_dark!r}")
+    if not report("system dark mode uses 青灰绿", active_dark, theme_ids.get("青灰绿")):
         failures += 1
-    else:
-        print(f"[PASS] active dark theme uses a saved custom theme: {active_dark!r}")
-    if not report("light theme remains Vivaldi", schedule.get("o_s", {}).get("light"), "Vivaldi1"):
+    active_light = schedule.get("o_s", {}).get("light")
+    if not report("system light mode uses 暖纸黄", active_light, theme_ids.get("暖纸黄")):
         failures += 1
 
     if LOCAL_STATE.exists():
