@@ -1,0 +1,4 @@
+interface:
+  display_name: "Arc-like Vivaldi Setup"
+  short_description: "Configure Vivaldi for a calm Arc-like workflow"
+  default_prompt: "Use $arc-like-vivaldi-setup to configure Vivaldi on this Mac and verify the result."

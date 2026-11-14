@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+"""Read-only audit of the validated Vivaldi macOS baseline."""
+
+from __future__ import annotations
+
+import json
+import plistlib
+import sys
+from pathlib import Path
+from typing import Any
+
+
+APP = Path("/Applications/Vivaldi.app")
+PROFILE = Path.home() / "Library/Application Support/Vivaldi/Default/Preferences"
+LOCAL_STATE = Path.home() / "Library/Application Support/Vivaldi/Local State"
+
+
+def load_json(path: Path) -> dict[str, Any]:
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def nested(data: dict[str, Any], path: str) -> Any:
+    value: Any = data
+    for part in path.split("."):
+        if not isinstance(value, dict) or part not in value:
+            return None
+        value = value[part]
+    return value
+
+
+def report(label: str, actual: Any, expected: Any) -> bool:
+    ok = actual == expected
+    state = "PASS" if ok else "FAIL"
+    print(f"[{state}] {label}: actual={actual!r}, expected={expected!r}")
+    return ok
+
+
+def main() -> int:
+    if not PROFILE.exists():
+        print(f"[FAIL] Vivaldi preferences not found: {PROFILE}", file=sys.stderr)
+        return 2
+
+    prefs = load_json(PROFILE)
+    failures = 0
+
+    if APP.exists():
+        version_file = APP / "Contents/Info.plist"
+        with version_file.open("rb") as handle:
+            info = plistlib.load(handle)
+        print(f"Vivaldi version: {info.get('CFBundleShortVersionString', 'unknown')}")
+    else:
+        print(f"[WARN] Vivaldi app not found at {APP}")
+
+    checks = [
+        ("tab bar is at the top", "vivaldi.tabs.bar.position", 0),
+        ("hover-expanded tab rail is off", "vivaldi.tabs.bar.expand_on_hover", False),
+        ("panel is on the right", "vivaldi.panels.position", 1),
+        ("panel toggle is visible", "vivaldi.panels.show_toggle", True),
+        ("interface auto-hide is enabled", "vivaldi.auto_hide.enabled", True),
+        ("only the panel slides out", "vivaldi.auto_hide.panel", True),
+        ("address bar stays visible", "vivaldi.auto_hide.address_bar", False),
+        ("tab bar stays visible", "vivaldi.auto_hide.tab_bar", False),
+        ("bookmark single-click is enabled", "vivaldi.bookmarks.single_click_opens", True),
+        ("title bar is hidden", "vivaldi.appearance.disable_title_bar", True),
+        ("notifications are blocked", "profile.default_content_setting_values.notifications", 2),
+        ("Do Not Track request is enabled", "enable_do_not_track", True),
+    ]
+
+    for label, path, expected in checks:
+        if not report(label, nested(prefs, path), expected):
+            failures += 1
+
+    if LOCAL_STATE.exists():
+        local_state = load_json(LOCAL_STATE)
+        if not report(
+            "hardware acceleration was enabled",
+            nested(local_state, "hardware_acceleration_mode_previous"),
+            True,
+        ):
+            failures += 1
+    else:
+        print(f"[WARN] Vivaldi Local State not found: {LOCAL_STATE}")
+
+    print("[MANUAL] Check startup: 上次会话 + 延迟加载恢复的标签页")
+    print("[MANUAL] Check performance: 均衡优化 + hardware acceleration enabled")
+    print("[MANUAL] Check privacy: 轻度 blocker + abusive-ad blocking enabled")
+    print("[MANUAL] Check permissions: location/camera/microphone = ask")
+    print("[MANUAL] Confirm the right panel slides out while the address bar remains fixed")
+
+    return 1 if failures else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
