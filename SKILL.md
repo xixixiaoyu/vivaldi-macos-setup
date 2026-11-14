@@ -1,11 +1,11 @@
 ---
-name: arc-like-vivaldi-setup
-description: Configure or audit Vivaldi on macOS for a stable, low-distraction, Arc-like browsing workflow. Use when preparing a new Mac or reproducing and verifying the user's preferred tab bar, sliding bookmarks panel, tab switching, startup, privacy, and performance settings.
+name: vivaldi-macos-setup
+description: Configure or audit Vivaldi on macOS for a stable, low-distraction daily browsing workflow. Use when preparing a new Mac or reproducing and verifying the user's preferred tab bar, sliding bookmarks panel, tab switching, startup, privacy, and performance settings.
 metadata:
-  short-description: "Configure Vivaldi like Arc on macOS"
+  short-description: "Configure a stable Vivaldi workflow on macOS"
 ---
 
-# Arc-like Vivaldi Setup
+# Vivaldi macOS Setup
 
 Set up Vivaldi as a stable daily browser while preserving the user's data and
 avoiding unnecessary layout churn.

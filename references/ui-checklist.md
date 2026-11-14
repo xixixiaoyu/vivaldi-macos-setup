@@ -1,4 +1,4 @@
-# Vivaldi Arc-like UI checklist
+# Vivaldi macOS UI checklist
 
 Validated on macOS with Vivaldi `8.3.4191.44` on 2026-11-14. UI labels can move
 in later releases; prefer the described behavior over hard-coded click positions.
